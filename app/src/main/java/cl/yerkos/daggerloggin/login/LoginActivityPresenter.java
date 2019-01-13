@@ -2,12 +2,15 @@ package cl.yerkos.daggerloggin.login;
 
 import android.support.annotation.Nullable;
 
+import javax.inject.Inject;
+
 public class LoginActivityPresenter implements LoginActivityMVP.Presenter {
 
     @Nullable
     private LoginActivityMVP.View view;
     private LoginActivityMVP.Model model;
 
+    @Inject
     public LoginActivityPresenter(LoginActivityMVP.Model model) {
         this.model = model;
     }

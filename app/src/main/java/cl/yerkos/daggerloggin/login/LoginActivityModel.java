@@ -1,10 +1,13 @@
 package cl.yerkos.daggerloggin.login;
 
+import javax.inject.Inject;
+
 public class LoginActivityModel implements LoginActivityMVP.Model {
 
     private LoginRepository loginRepository;
     LoginActivityMVP.Presenter presenter;
 
+    @Inject
     public LoginActivityModel(LoginRepository loginRepository) {
         this.loginRepository = loginRepository;
     }

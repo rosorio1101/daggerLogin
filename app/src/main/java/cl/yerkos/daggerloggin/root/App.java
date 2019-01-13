@@ -1,23 +1,13 @@
 package cl.yerkos.daggerloggin.root;
 
-import android.app.Application;
+import cl.yerkos.daggerloggin.di.components.DaggerApplicationComponent;
+import dagger.android.AndroidInjector;
+import dagger.android.support.DaggerApplication;
 
-import cl.yerkos.daggerloggin.login.LoginModule;
-
-public class App extends Application {
-
-    private ApplicationComponent applicationComponent;
+public class App extends DaggerApplication {
 
     @Override
-    public void onCreate() {
-        super.onCreate();
-        applicationComponent = DaggerApplicationComponent.builder()
-                .applicationModule(new ApplicationModule(this))
-                .loginModule(new LoginModule())
-                .build();
-    }
-
-    public ApplicationComponent getApplicationComponent(){
-        return applicationComponent;
+    protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
+        return DaggerApplicationComponent.builder().create(this);
     }
 }

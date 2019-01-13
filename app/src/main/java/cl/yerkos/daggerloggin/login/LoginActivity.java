@@ -11,11 +11,13 @@ import javax.inject.Inject;
 
 import cl.yerkos.daggerloggin.R;
 import cl.yerkos.daggerloggin.root.App;
+import dagger.android.support.DaggerAppCompatActivity;
 
-public class LoginActivity extends AppCompatActivity implements LoginActivityMVP.View {
+public class LoginActivity extends DaggerAppCompatActivity implements LoginActivityMVP.View {
 
     @Inject
     LoginActivityMVP.Presenter presenter;
+
     EditText et_login_name, et_login_lastname;
     Button btn_login_go;
 
@@ -23,8 +25,6 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        ((App) getApplication()).getApplicationComponent().inject(this);
 
         et_login_name = findViewById(R.id.et_login_name);
         et_login_lastname = findViewById(R.id.et_login_lastname);

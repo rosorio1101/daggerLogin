@@ -1,8 +1,15 @@
 package cl.yerkos.daggerloggin.login;
 
+import javax.inject.Inject;
+
 public class DatabaseRepository implements LoginRepository {
 
     private User user;
+
+    @Inject
+    public DatabaseRepository(){
+
+    }
 
     @Override
     public void saveUSer(User user) {
